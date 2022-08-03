@@ -19,4 +19,3 @@ def write_instructor():
     instructor_peter = Instructor(first_name='Peter', last_name='Chen', dob=datetime(1982, 5, 2), full_time=True, total_learners=2002)
     instructor_peter.save()
     print("Instructor objects all saved... ")
-    
