@@ -1,3 +1,5 @@
+from distutils.command.upload import upload
+from email.policy import default
 from time import timezone
 from xmlrpc.client import NOT_WELLFORMED_ERROR
 from django.db import models
@@ -60,12 +62,14 @@ class Learner(Userorm):
 # Course model Many to Many relationship
 class Course(models.Model):
     name = models.CharField(null=False, max_length=100, default='online course')
+    image = models.ImageField(upload_to='course_images/', null=True)
     description = models.CharField(max_length=500)
     #Many-to-many relationship with Instructor 
     instructors = models.ManyToManyField(Instructor)
     #Many to Many relationship with learners
     learner = models.ManyToManyField(Learner, through='Enrollement')
-
+    total_enrollment = models.IntegerField(default=0)
+    is_enrolled = False
     # Create a toString method for object stribg representation
     def __str__(self):
         return "Name: " + self.name + "," + \
