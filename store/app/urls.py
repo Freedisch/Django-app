@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     # Create a path object defining the URL pattern to the index view
     path(route='', view=views.popular_course_list, name='popular_course_list'),
+    path('course/<int:course_id>/enroll/', views.enroll, name='enroll'),
     
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
