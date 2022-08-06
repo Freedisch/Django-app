@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'onlinecourse/course.css' %}"
+    />
     {% load static %}
-</head>
-<body>
-<!-- Add your template there -->
-
-</body>
+  </head>
+  <body>
+    <!-- Add your template there -->
+    <div class="card">
+      <h2>Lessons:</h2>
+      {% for lesson in course.lesson_set.all %}
+      <div class="card">
+        <h5>Lesson {{lesson.order}} : {{lesson.title}}</h5>
+        <p>{{lesson.content}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
 </html>
