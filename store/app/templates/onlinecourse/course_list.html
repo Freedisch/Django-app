@@ -3,6 +3,12 @@
   <head>
     {% load static %}
     <meta charset="UTF-8" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'onlinecourse/course.css' %}"
+    />
     <title>Online Courses</title>
   </head>
   <body>
@@ -11,25 +17,27 @@
     <!-- Add your template there -->
     {% if course_list %}
     <ul>
-      {% for course in course_list %}
-      <div>
-        <img
-          src="{{ MEDIA_URL }}/{{ course.image }}"
-          width="360"
-          height="360"
-        />
-        <h1><b>{{ course.name }}</b></h1>
-        <p>{{ course.total_enrollment }} enrolled</p>
-        <p>{{ course.description }}</p>
-        <form action="{% url 'onlinecourse:enroll' course.id %}" method="post">
-          {% csrf_token %}
-          <input type="submit" value="Enroll" />
-        </form>
-      </div>
-      {% endfor %}
+    {% for course in course_list %}
+        <div class="container">
+           <div class="row">
+             <div class="column-33">
+                 <img src="{{MEDIA_URL}}/{{ course.image }}" width="360" height="360" >
+             </div>
+             <div class="column-66">
+                 <h1 class="xlarge-font"><b>{{ course.name }}</b></h1>
+                 <p style="color:MediumSeaGreen;"><b>{{course.total_enrollment}} enrolled</b></p>
+                 <p> {{ course.description }}</p>
+                 <form action="{% url 'enroll' course.id %}" method="post">
+                 {% csrf_token %}
+                 <input class="button"  type="submit"  value="Enroll">
+               </form>
+             </div>
+           </div>
+        </div>
+        <hr>
+    {% endfor %}
     </ul>
-    {% else %}
-    <p>No courses are available.</p>
-    {% endif %}
-  </body>
+ {% else %}
+ <p>No courses are available.</p>
+ {% endif %}
 </html>
