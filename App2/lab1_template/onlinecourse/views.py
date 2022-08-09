@@ -75,4 +75,3 @@ class CourseDetailsView(View):
             return render(request, 'onlinecourse/course_detail.html', context)
         except Course.DoesNotExist:
             raise Http404("No course matches the given id.")
-        
