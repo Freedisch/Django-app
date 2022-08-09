@@ -21,7 +21,7 @@
                 <h1 class="xlarge-font"><b>{{ course.name }}</b></h1>
                 <p style="color:MediumSeaGreen;"><b>{{course.total_enrollment}} enrolled</b></p>
                 <p> {{ course.description }}</p>
-                <form action="{% url 'onlinecourse:enroll' course.id %}" method="post">
+                <form action="{% url 'enroll' course.id %}" method="post">
                     {% csrf_token %}
                 <input class="button"  type="submit"  value="Enroll">
               </form>
