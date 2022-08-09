@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'onlinecourse/course.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-light bg-ligth">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="{% url 'onlinecourse:popular_course_list' %}" class="navbar-brand">Online Course</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="#" class="btn btn-link">{{ user.first_name }}({{ user.username}})</a>
+                    <a href="{% url 'onlinecourse:logout' %}" class="btn btn-link">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <form action="{% url 'onlinecourse:login' %}" method="post" class="form-inline">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username" name="username">
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
+                            <button class="btn btn-primary" type="submit">Login</button>
+                            <a href="{% url 'onlinecourse:registration' %}" class="btn btn-link">Sign Up</a>
+                        </div>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <!--Comment-->
     <div class="card">
         <h2>{{ course.name }}</h2>
         <h5>{{ course.description }}</h5>
