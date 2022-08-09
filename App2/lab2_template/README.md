@@ -3,7 +3,7 @@
 <h3>Created the logout_request, the logging_request, and the registration_request as differents views</h3>
 
 <h4>
-Understand the Django authentication system
-Create views and templates for user log in and log out
-Create views and templates for user registration
+Understand the Django authentication system <br>
+Create views and templates for user log in and log out<br>
+Create views and templates for user registration<br>
 </h4>
