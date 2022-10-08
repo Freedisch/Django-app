@@ -1,1 +1,0 @@
-<h1> Generating Generic views </h1>

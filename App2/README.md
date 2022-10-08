@@ -1,1 +1,0 @@
-<h1>Import an onlinecourse App Template and Database</h1>
